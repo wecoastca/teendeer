@@ -9,7 +9,7 @@
     "test": "echo \"Everything gonna be okay\"",
     "lint": "lerna exec npm run lint"
   },
-  "workspaces": [
-    "packages/*"
-  ]
+  "dependencies": {
+    "lerna": "^4.0.0"
+  }
 }
