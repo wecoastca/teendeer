@@ -1,5 +1,5 @@
 export type User = {
-  id: string;
+  id: number;
   fullname: string;
   login: string;
   password: string;
@@ -20,24 +20,24 @@ export type User = {
   geo: string;
 
   talent_info: {
-    "talent_id": string;
-    "talent_points": string;
-    "talent_level": string;
+    "talent_id": number;
+    "talent_points": number;
+    "talent_level": number;
   }[]
 
   steps_info: {
-    "step_id": string;
-    "active": string;
+    "step_id": number;
+    "active": boolean;
   }[]
 }
 
 export type Talent = {
-  id: string;
+  id: number;
   name: string;
 }
 
 export type Challenge = {
-  id: string;
+  id: number;
   challenge_name: string;
   image_url: string;
   req_talent_level: number;
@@ -47,7 +47,7 @@ export type Challenge = {
 
 //// TODO: still in process
 // export type Achievement = {
-//   id: string;
+//   id: number;
 //   name: string;
 //   type: string; // achievement_type
 //   image_url: string;
@@ -57,7 +57,7 @@ export type Challenge = {
 // }
 
 // export type Task = {
-//   id: string;
+//   id: number;
 //   name: string; // task_name
 //   challenge: string; // Challenge id?
 //   description: string;
@@ -67,7 +67,7 @@ export type Challenge = {
 // }
 
 // export type Step = {
-//   id: string;
+//   id: number;
 //   action: string; // DO not forget, 'vk_widget', 'ig_widget' or 'carousel'
 //   task: string; // Task id?
 //   name: string; // step_name
