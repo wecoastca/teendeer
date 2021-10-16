@@ -37,7 +37,8 @@ const App = () => {
     if (!isUsersLoaded) {
       dispatch(getUsers());
     }
-  }, [dispatch, isChallengesLoaded, isTalentsLoaded, isUsersLoaded]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Router>
