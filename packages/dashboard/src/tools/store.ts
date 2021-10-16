@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import talentReducer from '../features/talent/talentSlice';
+import userReduce from '../features/user/userSlice';
 
 export const store = configureStore({
   reducer: {
-    talent: talentReducer
+    talent: talentReducer,
+    user: userReduce
   },
 });
 
