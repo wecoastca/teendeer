@@ -7,11 +7,11 @@ import { selectTalentsStatus, getTalents, selectTalents } from './talentSlice';
 const TalentList = () => {
   const talents = useAppSelector(selectTalents);
   const status = useAppSelector(selectTalentsStatus);
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(getTalents());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getTalents());
+  // }, [dispatch]);
 
   return (
     <Spin spinning={status === 'loading'}>

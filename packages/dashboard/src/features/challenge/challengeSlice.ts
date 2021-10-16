@@ -7,11 +7,13 @@ import { message } from "antd";
 export interface ChallengeState {
   list: Challenge[];
   status: 'idle' | 'loading' | 'failed';
+  loaded: boolean;
 }
 
 const initialState: ChallengeState = {
   list: [],
-  status: 'idle'
+  status: 'idle',
+  loaded: false
 }
 
 export const addChallenge = createAsyncThunk('challenge/addChallenge', async (challenge: Partial<Challenge>) => {
@@ -48,7 +50,12 @@ export const challengeSlice = createSlice({
       .addCase(getChallenges.fulfilled, (state, action) => {
         state.status = 'idle';
         state.list = action.payload;
+        state.loaded = true;
         message.success('Request success');
+      })
+      .addMatcher(isRejectedAction, (state, action) => {
+        state.status = 'failed';
+        message.success('Request failed');
       })
       .addMatcher(isRejectedAction, (state, action) => {
         state.status = 'failed';
@@ -59,5 +66,6 @@ export const challengeSlice = createSlice({
 
 export const selectChallenge = (state: RootState) => state.challenge.list;
 export const selectChallengeStatus = (state: RootState) => state.challenge.status;
+export const selectIsChallengesLoaded = (state: RootState) => state.challenge.loaded;
 
 export default challengeSlice.reducer;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AppLayout from '../AppLayout/AppLayout';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Steps } from 'antd';
@@ -9,8 +9,36 @@ import Tasks from '../../pages/Tasks/Tasks';
 import Users from '../../pages/Users/Users';
 import Dashboard from '../../pages/Dashboard/Dashboard';
 import EmptyPage from '../../pages/EmptyPage/EmptyPage';
+import { useAppDispatch, useAppSelector } from '../../tools/hooks';
+import {
+  getChallenges,
+  selectIsChallengesLoaded,
+} from '../../features/challenge/challengeSlice';
+import {
+  getTalents,
+  selectIsTalentsLoaded,
+} from '../../features/talent/talentSlice';
+import { getUsers, selectIsUsersLoaded } from '../../features/user/userSlice';
 
 const App = () => {
+  const isChallengesLoaded = useAppSelector(selectIsChallengesLoaded);
+  const isTalentsLoaded = useAppSelector(selectIsTalentsLoaded);
+  const isUsersLoaded = useAppSelector(selectIsUsersLoaded);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (!isChallengesLoaded) {
+      dispatch(getChallenges());
+    }
+    if (!isTalentsLoaded) {
+      dispatch(getTalents());
+    }
+    if (!isUsersLoaded) {
+      dispatch(getUsers());
+    }
+  }, [dispatch, isChallengesLoaded, isTalentsLoaded, isUsersLoaded]);
+
   return (
     <Router>
       <AppLayout>

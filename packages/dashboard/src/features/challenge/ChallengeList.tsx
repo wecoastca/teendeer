@@ -10,11 +10,11 @@ import {
 const ChallengeList = () => {
   const challenges = useAppSelector(selectChallenge);
   const status = useAppSelector(selectChallengeStatus);
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(getChallenges());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getChallenges());
+  // }, [dispatch]);
 
   return (
     <Spin spinning={status === 'loading'}>

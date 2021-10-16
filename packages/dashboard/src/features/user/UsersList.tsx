@@ -56,11 +56,11 @@ const columns = [
 const UsersList = () => {
   const users = useAppSelector(selectUsers);
   const status = useAppSelector(selectUserStatus);
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(getUsers());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getUsers());
+  // }, [dispatch]);
 
   return (
     <Spin spinning={status === 'loading'}>
