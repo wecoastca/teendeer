@@ -1,4 +1,4 @@
-import { AnyAction, createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { AnyAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../tools/store";
 import { Talent } from "@teendeer/types";
 import { createTalent } from "./talentApi";
@@ -25,11 +25,7 @@ const isRejectedAction = (action: AnyAction) => {
 export const talentSlice = createSlice({
   name: 'talent',
   initialState,
-  reducers: {
-    add: (state: TalentsState, action: PayloadAction<Talent>) => {
-      state.list.push(action.payload);
-    }
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(addTalent.pending, (state) => {
@@ -44,8 +40,6 @@ export const talentSlice = createSlice({
       })
   }
 });
-
-export const { add } = talentSlice.actions;
 
 export const selectTalents = (state: RootState) => state.talent.list;
 export const selectTalentsStatus = (state: RootState) => state.talent.status;
