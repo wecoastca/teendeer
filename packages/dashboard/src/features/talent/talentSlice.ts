@@ -1,7 +1,8 @@
 import { AnyAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../tools/store";
 import { Talent } from "@teendeer/types";
-import { createTalent } from "./talentApi";
+import { createTalent, listTalents } from "./talentApi";
+import { message } from "antd";
 
 export interface TalentsState {
   list: Talent[];
@@ -13,9 +14,14 @@ const initialState: TalentsState = {
   status: 'idle'
 }
 
-export const addTalent = createAsyncThunk('talent/addTalent', async (talent: Talent) => {
+export const addTalent = createAsyncThunk('talent/addTalent', async (talent: Partial<Talent>) => {
   const response = await createTalent(talent);
-  return response.data;
+  return response;
+});
+
+export const getTalents = createAsyncThunk('talent/getTalents', async () => {
+  const response = await listTalents();
+  return response;
 });
 
 const isRejectedAction = (action: AnyAction) => {
@@ -34,9 +40,19 @@ export const talentSlice = createSlice({
       .addCase(addTalent.fulfilled, (state, action) => {
         state.status = 'idle';
         state.list.push(action.payload);
+        message.success('Request success');
+      })
+      .addCase(getTalents.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(getTalents.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.list = action.payload;
+        message.success('Request success');
       })
       .addMatcher(isRejectedAction, (state, action) => {
         state.status = 'failed';
+        message.success('Request failed');
       })
   }
 });
