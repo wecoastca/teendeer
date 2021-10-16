@@ -21,7 +21,7 @@ const ChallengeForm = () => {
     <Spin spinning={status === 'loading'}>
       <Card title="Создание челенджа">
         <Form name="form" form={form}>
-          <FormItem name="name" label="Название">
+          <FormItem name="challenge_name" label="Название">
             <Input />
           </FormItem>
           <FormItem name="image_url" label="URL картинки">
