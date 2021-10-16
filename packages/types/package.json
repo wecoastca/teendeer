@@ -1,6 +1,13 @@
 {
   "name": "@teendeer/types",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "start": "echo do nothing on types"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^4.4.4"
+  }
 }

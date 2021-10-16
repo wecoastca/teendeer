@@ -5,6 +5,7 @@
     "bootstrap": "lerna bootstrap",
     "build": "lerna exec npm run build",
     "start": "lerna run --parallel start",
+    "start:dashboard": "lerna run start --scope @teendeer/dashboard",
     "ci": "npm run bootstrap && npm run build && npm run start",
     "test": "echo \"Everything gonna be okay\"",
     "lint": "lerna exec npm run lint"
