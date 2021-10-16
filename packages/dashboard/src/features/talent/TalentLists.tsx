@@ -1,5 +1,6 @@
 import { Card, Spin } from 'antd';
 import React, { useEffect } from 'react';
+import TalentsSelect from '../../components/TalentsSelect/TalentsSelect';
 import { useAppSelector, useAppDispatch } from '../../tools/hooks';
 import { selectTalentsStatus, getTalents, selectTalents } from './talentSlice';
 
@@ -14,7 +15,9 @@ const TalentList = () => {
 
   return (
     <Spin spinning={status === 'loading'}>
-      <Card>{JSON.stringify(talents)}</Card>
+      <Card title="Список талантов">
+        <TalentsSelect talents={talents} />
+      </Card>
     </Spin>
   );
 };

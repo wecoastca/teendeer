@@ -1,7 +1,12 @@
+import { Empty } from 'antd';
 import React from 'react';
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <React.Fragment>
+      <Empty />
+    </React.Fragment>
+  );
 };
 
 export default Dashboard;
