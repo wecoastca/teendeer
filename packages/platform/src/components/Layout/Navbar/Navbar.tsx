@@ -1,4 +1,3 @@
-import { Button, Divider } from 'antd';
 import cn from 'classnames';
 import { Footer } from 'antd/lib/layout/layout';
 import React, { FC } from 'react';
