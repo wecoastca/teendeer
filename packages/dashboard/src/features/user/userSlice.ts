@@ -8,14 +8,12 @@ export interface UsersState {
   current: User | null;
   list: User[];
   status: 'idle' | 'loading' | 'failed';
-  loaded: boolean;
 }
 
 const initialState: UsersState = {
   current: null,
   list: [],
-  status: 'idle',
-  loaded: false,
+  status: 'idle'
 }
 
 export const addUser = createAsyncThunk('user/addUser', async (user: Partial<User>) => {
@@ -53,7 +51,6 @@ export const userSlice = createSlice({
       .addCase(getUsers.fulfilled, (state, action) => {
         state.status = 'idle';
         state.list = action.payload;
-        state.loaded = true;
         message.success('Request success');
       })
       .addMatcher(isRejectedAction, (state, action) => {
@@ -66,6 +63,5 @@ export const userSlice = createSlice({
 export const selectUser = (state: RootState) => state.user.current;
 export const selectUserStatus = (state: RootState) => state.user.status;
 export const selectUsers = (state: RootState) => state.user.list;
-export const selectIsUsersLoaded = (state: RootState) => state.user.loaded;
 
 export default userSlice.reducer;

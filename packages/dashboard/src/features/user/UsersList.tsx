@@ -1,7 +1,7 @@
 import { Spin, Table, Tag } from 'antd';
-import React, { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../../tools/hooks';
-import { selectUserStatus, getUsers, selectUsers } from './userSlice';
+import React from 'react';
+import { useAppSelector } from '../../tools/hooks';
+import { selectUserStatus, selectUsers } from './userSlice';
 
 const columns = [
   {
@@ -56,11 +56,6 @@ const columns = [
 const UsersList = () => {
   const users = useAppSelector(selectUsers);
   const status = useAppSelector(selectUserStatus);
-  // const dispatch = useAppDispatch();
-
-  // useEffect(() => {
-  //   dispatch(getUsers());
-  // }, [dispatch]);
 
   return (
     <Spin spinning={status === 'loading'}>

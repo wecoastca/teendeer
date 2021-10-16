@@ -12,37 +12,36 @@ import EmptyPage from '../../pages/EmptyPage/EmptyPage';
 import { useAppDispatch, useAppSelector } from '../../tools/hooks';
 import {
   getChallenges,
-  selectIsChallengesLoaded,
+  selectChallengeStatus,
 } from '../../features/challenge/challengeSlice';
 import {
   getTalents,
-  selectIsTalentsLoaded,
+  selectTalentsStatus,
 } from '../../features/talent/talentSlice';
-import { getUsers, selectIsUsersLoaded } from '../../features/user/userSlice';
+import { getUsers, selectUserStatus } from '../../features/user/userSlice';
 
 const App = () => {
-  const isChallengesLoaded = useAppSelector(selectIsChallengesLoaded);
-  const isTalentsLoaded = useAppSelector(selectIsTalentsLoaded);
-  const isUsersLoaded = useAppSelector(selectIsUsersLoaded);
+  const talentStatus = useAppSelector(selectTalentsStatus);
+  const userStatus = useAppSelector(selectUserStatus);
+  const challengeStatus = useAppSelector(selectChallengeStatus);
+
+  const loading =
+    talentStatus === 'loading' ||
+    userStatus === 'loading' ||
+    challengeStatus === 'loading';
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (!isChallengesLoaded) {
-      dispatch(getChallenges());
-    }
-    if (!isTalentsLoaded) {
-      dispatch(getTalents());
-    }
-    if (!isUsersLoaded) {
-      dispatch(getUsers());
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    dispatch(getChallenges());
+    dispatch(getTalents());
+    dispatch(getUsers());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Router>
-      <AppLayout>
+      <AppLayout spinning={loading}>
         <Switch>
           <Route exact path="/">
             <Dashboard />

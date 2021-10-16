@@ -7,13 +7,11 @@ import { message } from "antd";
 export interface TalentsState {
   list: Talent[];
   status: 'idle' | 'loading' | 'failed';
-  loaded: boolean;
 }
 
 const initialState: TalentsState = {
   list: [],
-  status: 'idle',
-  loaded: false
+  status: 'idle'
 }
 
 export const addTalent = createAsyncThunk('talent/addTalent', async (talent: Partial<Talent>) => {
@@ -50,7 +48,6 @@ export const talentSlice = createSlice({
       .addCase(getTalents.fulfilled, (state, action) => {
         state.status = 'idle';
         state.list = action.payload;
-        state.loaded = true;
         message.success('Request success');
       })
       .addMatcher(isRejectedAction, (state, action) => {
@@ -62,6 +59,5 @@ export const talentSlice = createSlice({
 
 export const selectTalents = (state: RootState) => state.talent.list;
 export const selectTalentsStatus = (state: RootState) => state.talent.status;
-export const selectIsTalentsLoaded = (state: RootState) => state.talent.loaded;
 
 export default talentSlice.reducer;
