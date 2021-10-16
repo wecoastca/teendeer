@@ -1,12 +1,13 @@
 import React from 'react';
+import AppPageHeader from '../../components/AppPageHeader/AppPageHeader';
 import UserForm from '../../features/user/UserForm';
 
 const Users = () => {
   return (
-    <div>
-      Users:
+    <React.Fragment>
+      <AppPageHeader title="Пользователи" />
       <UserForm />
-    </div>
+    </React.Fragment>
   );
 };
 
