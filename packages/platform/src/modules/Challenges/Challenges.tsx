@@ -1,6 +1,7 @@
 import { Select, Card, Avatar, Spin } from 'antd'
 import { useExecuteRequest } from 'hooks';
 import React, { FC, useState } from 'react'
+import { NavLink } from 'react-router-dom';
 
 const { Meta } = Card;
 
@@ -64,10 +65,10 @@ export const Challenges: FC = () => {
     const [isLoading, setIsLoading] = useState(false);
     const { execute, value } = useExecuteRequest('endpoint');
     const onChange = (value: string[]) => {
-        setIsLoading(true);
+        // setIsLoading(true);  
         const tagsLabels: string[] = value?.reduce<string[]>((acc, curr) => { acc.push(selectData?.find((x) => x?.value === curr)?.title || ''); return acc; }, [])
         setChosenTags(tagsLabels);
-        execute().finally(() => setIsLoading(false));
+        // execute().finally(() => setIsLoading(false));
     }
     return (
         <Spin spinning={isLoading}>
@@ -85,14 +86,15 @@ export const Challenges: FC = () => {
                     <Card
                         style={{ width: '100%', marginTop: 16 }}
                         key={x?.key}
+                        hoverable
                     >
-                        <Meta
-                            avatar={
-                                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                            }
-                            title={x?.title}
-                            description={x?.description}
-                        />
+                        <NavLink to={`/challenges/${x?.key}`}>
+                            <Meta
+                                avatar={<Avatar />}
+                                title={x?.title}
+                                description={x?.description}
+                            />
+                        </NavLink>
                     </Card>
                 ))
             }

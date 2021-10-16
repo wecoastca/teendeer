@@ -7,7 +7,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import { Achievements, Afisha, Challenges, Profile, Store } from 'modules';
+import { Achievements, Afisha, Challenges, CurrentChallenge, Profile, Store } from 'modules';
 
 function App() {
   return (
@@ -23,8 +23,11 @@ function App() {
           <Route path="/achieve">
             <Achievements />
           </Route>
-          <Route path="/challenges">
+          <Route exact path="/challenges">
             <Challenges />
+          </Route>
+          <Route path="/challenges/:id">
+            <CurrentChallenge />
           </Route>
           <Route path="/store">
             <Store />
