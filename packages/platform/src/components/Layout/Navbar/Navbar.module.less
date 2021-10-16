@@ -2,7 +2,7 @@
     position: fixed;
     bottom: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
-    background-color: #520339;
+    background-color: #fff;
     padding: 0;
     max-height: 60px;
     height: 100%;
@@ -12,7 +12,9 @@
     display: flex;
     align-items: stretch;
     height: 100%;
-    outline: auto;
+    outline: none;
+    justify-content: space-evenly;
+    border-top: 1px solid #999;
 }
 .navbarButton {
     display: inline-flex;
@@ -20,7 +22,29 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     border-color: white;
     border-radius: 0px;
+    width: 100%;
+
+    & a {
+        color: #444;
+    }
+
+    & + & {
+        border-left: 1px solid #f2f2f2;
+    }
+}
+
+.active {
+    background: #520339;
+    color: #fff;
+
+    &:hover {
+        color: #fff;
+    }
+}
+
+.target {
+    font-weight: bold;
 }
