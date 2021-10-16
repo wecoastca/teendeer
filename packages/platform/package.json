@@ -1,5 +1,5 @@
 {
-  "name": "teendeer-admin",
+  "name": "@teendeer/platform",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
