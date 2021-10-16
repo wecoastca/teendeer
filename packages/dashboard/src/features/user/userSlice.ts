@@ -2,6 +2,7 @@ import { AnyAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../tools/store";
 import { User } from "@teendeer/types";
 import { createUser } from "./userApi";
+import { message } from "antd";
 
 export interface UsersState {
   current: User | null;
@@ -13,9 +14,9 @@ const initialState: UsersState = {
   status: 'idle'
 }
 
-export const addUser = createAsyncThunk('user/addUser', async (user: User) => {
+export const addUser = createAsyncThunk('user/addUser', async (user: Partial<User>) => {
   const response = await createUser(user);
-  return response.data;
+  return response;
 });
 
 const isRejectedAction = (action: AnyAction) => {
@@ -34,9 +35,11 @@ export const userSlice = createSlice({
       .addCase(addUser.fulfilled, (state, action) => {
         state.status = 'idle';
         state.current = action.payload;
+        message.success('Request success');
       })
       .addMatcher(isRejectedAction, (state, action) => {
         state.status = 'failed';
+        message.error('Request failed');
       })
   }
 });

@@ -1,8 +1,9 @@
 import { User } from "@teendeer/types";
+import { apiClient } from '../../tools/utils';
 
-export const createUser = (note: User) => {
-  return new Promise<{ data: User }>((resolve, reject) =>
-    setTimeout(() => resolve({ data: note }), 1000)
-    // setTimeout(() => reject({ data: note }), 1000)
-  );
+export const createUser = async (user: Partial<User>): Promise<User> => {
+  const response = await apiClient.post('/user', user);
+  const data = response.data as User;
+
+  return data;
 }
