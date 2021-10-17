@@ -1,4 +1,4 @@
-import { Spin, Space, Card, Typography, Divider, Tag } from 'antd';
+import { Spin, Space, Card, Typography, Divider, Tag, Empty } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import React from 'react';
 import { useAppSelector } from '../../tools/hooks';
@@ -9,6 +9,10 @@ const { Title } = Typography;
 const StepList = () => {
   const steps = useAppSelector(selectStep);
   const status = useAppSelector(selectStepStatus);
+
+  if (!steps || !steps?.map) {
+    return <Empty />;
+  }
 
   return (
     <Spin spinning={status === 'loading'}>

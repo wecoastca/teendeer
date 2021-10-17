@@ -22,6 +22,7 @@ const TasksList = () => {
               <Tag color="default">Челендж: {task.challenge_id}</Tag>,
               <Tag color="blue">Позиция: {task.task_number}</Tag>,
               <Tag color="blue">Награда: {task.task_points}</Tag>,
+              <Tag color="blue">id: {task.id}</Tag>
             ]}
             key={task.id}
             style={{ width: 400 }}>
