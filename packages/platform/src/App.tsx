@@ -8,6 +8,7 @@ import {
   Redirect
 } from "react-router-dom";
 import { Achievements, Afisha, Challenges, CurrentChallenge, Profile, Store } from 'modules';
+import { CurrentTask } from 'modules/Challenges/CurrentTask';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/challenges/:id">
             <CurrentChallenge />
+          </Route>
+          <Route path="/tasks/:id">
+            <CurrentTask />
           </Route>
           <Route path="/store">
             <Store />

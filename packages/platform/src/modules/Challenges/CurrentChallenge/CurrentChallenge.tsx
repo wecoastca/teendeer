@@ -3,6 +3,7 @@ import { Status, useExecuteRequest } from "hooks";
 import React, { FC, useEffect } from "react";
 import { useParams } from "react-router";
 import conf from 'assets/conf.jpeg';
+import { NavLink } from "react-router-dom";
 
 type ChallengeResponseType = {
     challenge_name: string;
@@ -82,18 +83,20 @@ export const CurrentChallenge: FC = () => {
 
     return (
         <Spin spinning={statusChallenge === Status.PENDING || statusTasks === Status.PENDING}>
-            <Card title={challengeInfo?.challenge_name || mockGetChallenge?.challenge_name} size="small" style={{marginBottom: '15px'}} >
+            <Card title={challengeInfo?.challenge_name || mockGetChallenge?.challenge_name} size="small" style={{ marginBottom: '15px' }} >
                 {challengeInfo?.description || mockGetChallenge?.description}
                 <Progress percent={(challengeInfo?.currentStep || mockGetChallenge?.currentStep) / (challengeInfo?.totalSteps || mockGetChallenge?.totalSteps) * 100} />
             </Card>
             <Row gutter={[16, 16]}>
                 {(tasks || mockGetTasks).map((x) => (
-                    <Col span={12} key={x?.id} style={x?.finished ? {opacity: '30%'} : undefined}>
+                    <Col span={12} key={x?.id} style={x?.finished ? { opacity: '30%' } : undefined}>
                         <Card
                             hoverable
                             cover={<img alt="step-image" src={x?.image_url || conf} />}
                         >
-                            <Meta title={x?.description} description={x?.name} />
+                            <NavLink to={`/tasks/${x?.id}`}>
+                                <Meta title={x?.description} description={x?.name} />
+                            </NavLink>
                         </Card>
                     </Col>))
                 }
