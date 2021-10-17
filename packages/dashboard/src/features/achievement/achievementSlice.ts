@@ -1,7 +1,7 @@
 import { AnyAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../tools/store";
 import { Achievement } from "@teendeer/types";
-import { createAchievement, listAchievement } from "./achievementApi";
+import { createAchievement, listAchievement } from "@teendeer/api";
 import { message } from "antd";
 
 export interface AchievementsState {

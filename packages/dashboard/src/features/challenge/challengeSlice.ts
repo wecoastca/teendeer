@@ -1,7 +1,7 @@
 import { AnyAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../tools/store";
 import { Challenge } from "@teendeer/types";
-import { createChallenge, listChallenges } from "./challengeApi";
+import { createChallenge, listChallenges } from "@teendeer/api";
 import { message } from "antd";
 
 export interface ChallengeState {

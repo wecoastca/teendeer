@@ -1,7 +1,7 @@
 import { AnyAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../tools/store";
 import { Talent } from "@teendeer/types";
-import { createTalent, listTalents } from "./talentApi";
+import { createTalent, listTalents } from "@teendeer/api";
 import { message } from "antd";
 
 export interface TalentsState {

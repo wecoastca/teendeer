@@ -1,7 +1,7 @@
 import { AnyAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../tools/store";
 import { User } from "@teendeer/types";
-import { createUser, listUsers } from "./userApi";
+import { createUser, listUsers } from "@teendeer/api";
 import { message } from "antd";
 
 export interface UsersState {

@@ -1,5 +1,5 @@
 import { Achievement } from "@teendeer/types";
-import { apiClient } from '../../tools/utils';
+import { apiClient } from '../../utils';
 
 export const createAchievement = async (achievement: Partial<Achievement>): Promise<Achievement> => {
   const response = await apiClient.post('/achievement', achievement);

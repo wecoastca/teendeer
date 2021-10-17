@@ -1,5 +1,5 @@
 import { Step } from "@teendeer/types";
-import { apiClient } from '../../tools/utils';
+import { apiClient } from '../../utils';
 
 export const createStep = async (step: Partial<Step>): Promise<Step> => {
   const response = await apiClient.post('/step', step);

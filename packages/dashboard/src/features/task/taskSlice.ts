@@ -1,7 +1,7 @@
 import { AnyAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../tools/store";
 import { Task } from "@teendeer/types";
-import { createTask, listTasks } from "./taskApi";
+import { createTask, listTasks } from "@teendeer/api";
 import { message } from "antd";
 
 export interface TaskState {

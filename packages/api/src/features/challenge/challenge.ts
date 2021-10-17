@@ -1,5 +1,5 @@
 import { Challenge } from "@teendeer/types";
-import { apiClient } from '../../tools/utils';
+import { apiClient } from '../../utils';
 
 export const createChallenge = async (challenge: Partial<Challenge>): Promise<Challenge> => {
   const response = await apiClient.post('/challenge', challenge);

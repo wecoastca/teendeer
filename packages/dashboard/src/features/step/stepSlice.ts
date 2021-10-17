@@ -1,7 +1,7 @@
 import { AnyAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../tools/store";
 import { Step } from "@teendeer/types";
-import { createStep, listSteps } from "./stepApi";
+import { createStep, listSteps } from "@teendeer/api";
 import { message } from "antd";
 
 export interface StepState {
