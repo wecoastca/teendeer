@@ -3,7 +3,7 @@ import React from 'react';
 import { useHistory } from 'react-router';
 
 type Props = {
-  title: string;
+  title?: string;
 };
 
 const AppPageHeader = ({ title }: Props) => {

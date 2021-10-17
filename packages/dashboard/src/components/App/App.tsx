@@ -77,6 +77,9 @@ const App = () => {
         <Route path="/achievements">
           <Achievements />
         </Route>
+        <Route path="/challenges/:id">
+          <Challenges />
+        </Route>
         <Route path="/challenges">
           <Challenges />
         </Route>
