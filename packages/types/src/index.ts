@@ -71,7 +71,7 @@ export type Step = {
   id: number;
   task_id: number;
   step_name: string;
-  action: string;
+  action: StepAction;
   step_number: number;
   step_text: string;
   image_url: string;
@@ -79,6 +79,14 @@ export type Step = {
   meta_type: string
   meta_urls: string[];
 }
+
+export enum StepAction {
+  CHECK_EXAMPLES = 'checkExamples',
+  UPLOAD = "upload",
+  WRITE_TEXT = "writeText",
+  PUBLISH = "publish",
+  TASK_SUCCESS = "taskSuccess"
+};
 
 export type Product = {
   id: number;

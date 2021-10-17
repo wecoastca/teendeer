@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Challenge } from '@teendeer/types';
 import { Button, Card, Form, Input, Spin } from 'antd';
 import { useForm } from 'antd/lib/form/Form';

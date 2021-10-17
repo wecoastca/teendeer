@@ -2,7 +2,7 @@ import { Button, Card, Spin, Steps } from 'antd';
 import React, { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { ActionTypeStrategy } from './ActionTypeStrategy';
-import { Step, Task } from "@teendeer/types";
+import { Step, StepAction, Task } from "@teendeer/types";
 import { getStepsByTaskId, listTasks } from "@teendeer/api"; 
 
 const mockGetCurrentTask = {
@@ -20,7 +20,7 @@ const mockGetCurrentTask = {
 const mockStepFirstData = {
     description: 'Это шаг рассказывающий про то почему не стоит начинать изучать программированию с js, так как иначе ученик станет фронтендером.',
     stepName: 'Впишите ваши идеи, почему фронтенд не для вас',
-    actionType: ActionType.WRITE_TEXT
+    actionType: StepAction.WRITE_TEXT
 }
 export const CurrentTask: FC = () => {
     const { id } = useParams<{ id: string }>();

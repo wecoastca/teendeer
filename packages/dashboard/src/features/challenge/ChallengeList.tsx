@@ -15,7 +15,6 @@ const ChallengeList = () => {
   const status = useAppSelector(selectChallengeStatus);
 
   const handleClick = (id: number) => () => {
-    console.log(id);
     history.push(`${location.pathname}/${id}`);
   };
 

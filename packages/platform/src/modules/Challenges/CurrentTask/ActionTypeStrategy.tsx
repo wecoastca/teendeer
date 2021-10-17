@@ -3,6 +3,7 @@ import React, { FC, useState } from 'react';
 import front from 'assets/front.png';
 import conf from 'assets/conf.jpeg';
 import { InboxOutlined, SmileOutlined } from '@ant-design/icons';
+import { StepAction } from '@teendeer/types';
 
 const { Dragger } = Upload;
 const { TextArea } = Input;
@@ -19,7 +20,7 @@ export const ActionTypeStrategy: FC<ActionTypeStrategyPropsType> = ({ actionType
         <div style={{ marginBottom: '20px' }}>
             {(() => {
                 switch (actionType) {
-                    case ActionType.CHECK_EXAMPLES:
+                    case StepAction.CHECK_EXAMPLES:
                         return (
                             <Carousel>
                                 <img alt="carousel item" src={front} />
@@ -27,7 +28,7 @@ export const ActionTypeStrategy: FC<ActionTypeStrategyPropsType> = ({ actionType
                                 <img alt="carousel item" src={front} />
                             </Carousel>
                         );
-                    case ActionType.PUBLISH:
+                    case StepAction.PUBLISH:
                         return (
                             <Row gutter={[16, 16]}>
                                 <Col span={12}>
@@ -38,7 +39,7 @@ export const ActionTypeStrategy: FC<ActionTypeStrategyPropsType> = ({ actionType
                                 </Col>
                             </Row>
                         );
-                    case ActionType.TASK_SUCCESS:
+                    case StepAction.TASK_SUCCESS:
                         return (
                             <Result
                                 icon={<SmileOutlined />}
@@ -46,7 +47,7 @@ export const ActionTypeStrategy: FC<ActionTypeStrategyPropsType> = ({ actionType
                                 extra={<Button type="primary">К челенджам!</Button>}
                             />
                         );
-                    case ActionType.UPLOAD:
+                    case StepAction.UPLOAD:
                         return (
                             <Dragger
                                 style={{ maxHeight: '20%', marginTop: '10px' }}
@@ -58,7 +59,7 @@ export const ActionTypeStrategy: FC<ActionTypeStrategyPropsType> = ({ actionType
                                 </p>
                             </Dragger>
                         );
-                    case ActionType.WRITE_TEXT:
+                    case StepAction.WRITE_TEXT:
                         return (<TextArea rows={4} />);
                     default:
                         return null;
