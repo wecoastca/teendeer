@@ -79,3 +79,14 @@ export type Step = {
   meta_type: string
   meta_urls: string[];
 }
+
+export type Product = {
+  id: number;
+  product_name: string;
+  description: string;
+  image_url: string;
+  price: number;
+  geo: string;
+  url: string;
+  product_type: 'event' | 'food' | 'clothes';
+}
