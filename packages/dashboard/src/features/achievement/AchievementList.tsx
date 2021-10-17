@@ -25,7 +25,7 @@ const AchievementList = () => {
               <Tag color="default">{achievement.achievement_type}</Tag>,
               <Tag color="blue">{achievement.talent_points}</Tag>,
             ]}
-            title={achievement.id}
+            key={achievement.id}
             style={{ width: 240 }}>
             <Meta
               title={achievement.name}
