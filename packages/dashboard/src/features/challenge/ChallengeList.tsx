@@ -32,6 +32,7 @@ const ChallengeList = () => {
             actions={[
               <Tag color="default">Уровень: {challenge.req_talent_level}</Tag>,
               <Tag color="blue">Талант: {challenge.talent_id}</Tag>,
+              <Tag color="default">id: {challenge.id}</Tag>,
             ]}
             key={challenge.id}
             style={{ width: 240 }}>

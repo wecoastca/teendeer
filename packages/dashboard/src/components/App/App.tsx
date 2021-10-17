@@ -30,6 +30,7 @@ import {
   getEvents,
   selectEventsStatus,
 } from '../../features/events/eventsSlice';
+import Search from '../../pages/Search/Search';
 
 const App = () => {
   const talentStatus = useAppSelector(selectTalentsStatus);
@@ -91,6 +92,9 @@ const App = () => {
         </Route>
         <Route path="/events">
           <Events />
+        </Route>
+        <Route path="/search">
+          <Search />
         </Route>
         <Route path="*">
           <EmptyPage />

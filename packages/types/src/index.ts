@@ -19,18 +19,22 @@ export type User = {
 
   geo: string;
 
-  talent_info: {
-    "talent_id": number;
-    "talent_points": number;
-    "talent_level": number;
-  }[]
-
-  step_info: {
-    "step_id": number;
-    "active": boolean;
-  }[]
+  talent_info: TalentInfo[]
+  step_info: StepInfo[]
 
   achievement_ids: string[];
+}
+
+export type TalentInfo = {
+  talent_id: number;
+  talent_points: number;
+  talent_level: number;
+}
+
+export type StepInfo = {
+  talent_id: number;
+  talent_points: number;
+  talent_level: number;
 }
 
 export type Talent = {

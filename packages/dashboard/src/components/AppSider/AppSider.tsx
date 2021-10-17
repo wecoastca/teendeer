@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserOutlined, LaptopOutlined } from '@ant-design/icons';
+import { UserOutlined, LaptopOutlined, StarFilled } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import { useHistory } from 'react-router-dom';
 
@@ -30,6 +30,22 @@ const AppSider = () => {
           <Menu.Item key="/challenges">Список челенджей</Menu.Item>
           <Menu.Item key="/tasks">Задачи</Menu.Item>
           <Menu.Item key="/steps">Шаги</Menu.Item>
+        </SubMenu>
+        <SubMenu
+          key="challenges"
+          icon={<StarFilled />}
+          style={{
+            fontWeight: 'bold',
+            color: '#520339',
+            borderTop: '2px solid #520339',
+          }}
+          title="Таланты">
+          <Menu.Item
+            key="/search"
+            disabled={false}
+            style={{ fontWeight: 'normal' }}>
+            Поиск талантов
+          </Menu.Item>
         </SubMenu>
       </Menu>
     </Sider>
