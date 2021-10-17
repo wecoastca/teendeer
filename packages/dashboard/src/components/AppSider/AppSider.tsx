@@ -25,6 +25,7 @@ const AppSider = () => {
           <Menu.Item key="/users">Список пользователей</Menu.Item>
           <Menu.Item key="/talents">Таланты</Menu.Item>
           <Menu.Item key="/achievements">Достижения</Menu.Item>
+          <Menu.Item key="/events">События</Menu.Item>
         </SubMenu>
         <SubMenu key="challenges" icon={<LaptopOutlined />} title="Челенджи">
           <Menu.Item key="/challenges">Список челенджей</Menu.Item>

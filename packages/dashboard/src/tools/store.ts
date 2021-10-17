@@ -5,6 +5,7 @@ import challengeReducer from '../features/challenge/challengeSlice';
 import achievementReducer from '../features/achievement/achievementSlice';
 import taskReducer from '../features/task/taskSlice';
 import stepReducer from '../features/step/stepSlice';
+import eventsReducer from '../features/events/eventsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     achievement: achievementReducer,
     task: taskReducer,
     step: stepReducer,
+    events: eventsReducer
   },
 });
 

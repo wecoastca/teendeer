@@ -25,6 +25,11 @@ import {
 } from '../../features/achievement/achievementSlice';
 import { getTasks, selectTaskStatus } from '../../features/task/taskSlice';
 import { getSteps, selectStepStatus } from '../../features/step/stepSlice';
+import Events from '../../pages/Events/Events';
+import {
+  getEvents,
+  selectEventsStatus,
+} from '../../features/events/eventsSlice';
 
 const App = () => {
   const talentStatus = useAppSelector(selectTalentsStatus);
@@ -33,6 +38,7 @@ const App = () => {
   const acievementsStatus = useAppSelector(selectAchievementsStatus);
   const taskStatus = useAppSelector(selectTaskStatus);
   const stepStatus = useAppSelector(selectStepStatus);
+  const eventsStatus = useAppSelector(selectEventsStatus);
 
   const loading =
     talentStatus === 'loading' ||
@@ -40,7 +46,8 @@ const App = () => {
     challengeStatus === 'loading' ||
     acievementsStatus === 'loading' ||
     taskStatus === 'loading' ||
-    stepStatus === 'loading';
+    stepStatus === 'loading' ||
+    eventsStatus === 'loading';
 
   const dispatch = useAppDispatch();
 
@@ -51,6 +58,7 @@ const App = () => {
     dispatch(getAchievements());
     dispatch(getTasks());
     dispatch(getSteps());
+    dispatch(getEvents());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -77,6 +85,9 @@ const App = () => {
         </Route>
         <Route path="/steps">
           <Steps />
+        </Route>
+        <Route path="/events">
+          <Events />
         </Route>
         <Route path="*">
           <EmptyPage />
