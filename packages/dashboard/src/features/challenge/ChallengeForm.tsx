@@ -5,6 +5,7 @@ import { useForm } from 'antd/lib/form/Form';
 import FormItem from 'antd/lib/form/FormItem';
 import { useAppDispatch, useAppSelector } from '../../tools/hooks';
 import { addChallenge, selectChallengeStatus } from './challengeSlice';
+// import AchievementAutocomplete from './AchievementAutocomplete';
 
 type Props = {
   challenge?: Challenge;
@@ -43,6 +44,7 @@ const ChallengeForm = ({ challenge }: Props) => {
           </FormItem>
           <FormItem name="achievement_id" label="ID ачивки">
             <Input type="number" />
+            {/* <AchievementAutocomplete /> */}
           </FormItem>
           <Button type="primary" onClick={handleSubmit}>
             Добавить
