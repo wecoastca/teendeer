@@ -1,19 +1,19 @@
 import { Carousel, Upload, Input, Row, Col, DatePicker, TimePicker, Result, Button } from 'antd';
 import React, { FC, useState } from 'react';
-import front from 'assets/front.png';
-import conf from 'assets/conf.jpeg';
 import { InboxOutlined, SmileOutlined } from '@ant-design/icons';
-import { StepAction } from '@teendeer/types';
+import { StepAction, Step } from '@teendeer/types';
+import { NavLink } from 'react-router-dom';
 
 const { Dragger } = Upload;
 const { TextArea } = Input;
 
 export interface ActionTypeStrategyPropsType {
-    actionType: string;
-}
+    actionType?: string;
+    step?: Step
+};
 
 //TODO: Изоляция логики каждого компонента
-export const ActionTypeStrategy: FC<ActionTypeStrategyPropsType> = ({ actionType }) => {
+export const ActionTypeStrategy: FC<ActionTypeStrategyPropsType> = ({ actionType, step }) => {
     const [publishDate, setPublishDate] = useState();
 
     return (
@@ -23,9 +23,9 @@ export const ActionTypeStrategy: FC<ActionTypeStrategyPropsType> = ({ actionType
                     case StepAction.CHECK_EXAMPLES:
                         return (
                             <Carousel>
-                                <img alt="carousel item" src={front} />
-                                <img alt="carousel item" src={conf} />
-                                <img alt="carousel item" src={front} />
+                                <img alt="carousel item" src={step?.image_url} />
+                                <img alt="carousel item" src={step?.image_url} />
+                                <img alt="carousel item" src={step?.image_url} />
                             </Carousel>
                         );
                     case StepAction.PUBLISH:
@@ -44,7 +44,11 @@ export const ActionTypeStrategy: FC<ActionTypeStrategyPropsType> = ({ actionType
                             <Result
                                 icon={<SmileOutlined />}
                                 title="Вы успешно завершили все шаги, поздравляем!"
-                                extra={<Button type="primary">К челенджам!</Button>}
+                                extra={
+                                    <Button type="primary">
+                                        <NavLink to={`/challenges`}>К челенджам!</NavLink>
+                                    </Button>
+                                }
                             />
                         );
                     case StepAction.UPLOAD:

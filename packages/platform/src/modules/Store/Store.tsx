@@ -3,7 +3,6 @@ import Meta from 'antd/lib/card/Meta';
 import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import pled from 'assets/pled.jpeg';
-import conf from 'assets/conf.jpeg';
 
 const selectData = [{
     title: 'Мерч',
