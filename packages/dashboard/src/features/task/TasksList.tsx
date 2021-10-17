@@ -21,10 +21,10 @@ const TasksList = () => {
             actions={[
               <Tag color="default">Челендж: {task.challenge_id}</Tag>,
               <Tag color="blue">Позиция: {task.task_number}</Tag>,
-              <Tag color="blue">Шагов: {task.task_points}</Tag>,
+              <Tag color="blue">Награда: {task.task_points}</Tag>,
             ]}
             key={task.id}
-            style={{ width: 240 }}>
+            style={{ width: 400 }}>
             <Meta title={task.task_name} description={task.description} />
           </Card>
         ))}

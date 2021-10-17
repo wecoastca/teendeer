@@ -23,18 +23,21 @@ import {
   getAchievements,
   selectAchievementsStatus,
 } from '../../features/achievement/achievementSlice';
+import { getTasks, selectTaskStatus } from '../../features/task/taskSlice';
 
 const App = () => {
   const talentStatus = useAppSelector(selectTalentsStatus);
   const userStatus = useAppSelector(selectUserStatus);
   const challengeStatus = useAppSelector(selectChallengeStatus);
   const acievementsStatus = useAppSelector(selectAchievementsStatus);
+  const taskStatus = useAppSelector(selectTaskStatus);
 
   const loading =
     talentStatus === 'loading' ||
     userStatus === 'loading' ||
     challengeStatus === 'loading' ||
-    acievementsStatus === 'loading';
+    acievementsStatus === 'loading' ||
+    taskStatus === 'loading';
 
   const dispatch = useAppDispatch();
 
@@ -43,6 +46,7 @@ const App = () => {
     dispatch(getTalents());
     dispatch(getUsers());
     dispatch(getAchievements());
+    dispatch(getTasks());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
