@@ -25,10 +25,12 @@ export type User = {
     "talent_level": number;
   }[]
 
-  steps_info: {
+  step_info: {
     "step_id": number;
     "active": boolean;
   }[]
+
+  achievement_ids: string[];
 }
 
 export type Talent = {
@@ -55,26 +57,25 @@ export type Achievement = {
   talent_points: number;
 }
 
-//// TODO: still in process
-// export type Task = {
-//   id: number;
-//   name: string; // task_name
-//   challenge: string; // Challenge id?
-//   description: string;
-//   image_url: string;
-//   points: number;
-//   task_order: number; // task_number
-// }
+export type Task = {
+  id: number;
+  challenge_id: number;
+  task_name: string;
+  description: string;
+  image_url: string;
+  task_points: number;
+  task_number: number;
+}
 
-// export type Step = {
-//   id: number;
-//   action: string; // DO not forget, 'vk_widget', 'ig_widget' or 'carousel'
-//   task: string; // Task id?
-//   name: string; // step_name
-//   order: number; // step_number
-//   description: string; // step_text
-//   image_url: string;
-//   button_text: string;
-//   meta_type: string
-//   meta_urls: string[]; // not single string, Array
-// }
+export type Step = {
+  id: number;
+  task_id: number;
+  step_name: string;
+  action: string;
+  step_number: number;
+  step_text: string;
+  image_url: string;
+  button_text: string;
+  meta_type: string
+  meta_urls: string[];
+}
