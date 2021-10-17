@@ -3,7 +3,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { ActionTypeStrategy } from './ActionTypeStrategy';
 import { Step, StepAction, Task } from "@teendeer/types";
-import { getStepsByTaskId, listTasks } from "@teendeer/api"; 
+import { getStepsByTaskId, listTasks } from "@teendeer/api";
 
 const mockGetCurrentTask = {
     id: '1',
@@ -53,10 +53,10 @@ export const CurrentTask: FC = () => {
                 </Steps>
             </Card>
             <Card style={{ borderColor: 'black' }}>
-                {{}|| mockStepFirstData?.description}
-                <h1>{{} || mockStepFirstData?.stepName}</h1>
-                <ActionTypeStrategy actionType={ '' || mockStepFirstData?.actionType} />
-                {mockGetCurrentTask.stepsNumber !== currentStep ?
+                {stepData?.[currentStep]?.step_text}
+                <h1>{stepData?.[currentStep]?.step_name}</h1>
+                <ActionTypeStrategy actionType={stepData?.[currentStep]?.action} step={stepData?.[currentStep]} />
+                {stepData?.length !== currentStep ?
                     (<Button onClick={() => setCurrentStep(currentStep + 1)}>
                         Далее
                     </Button>)
