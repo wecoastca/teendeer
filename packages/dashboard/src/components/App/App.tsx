@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AppLayout from '../AppLayout/AppLayout';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Steps } from 'antd';
@@ -9,11 +9,46 @@ import Tasks from '../../pages/Tasks/Tasks';
 import Users from '../../pages/Users/Users';
 import Dashboard from '../../pages/Dashboard/Dashboard';
 import EmptyPage from '../../pages/EmptyPage/EmptyPage';
+import { useAppDispatch, useAppSelector } from '../../tools/hooks';
+import {
+  getChallenges,
+  selectChallengeStatus,
+} from '../../features/challenge/challengeSlice';
+import {
+  getTalents,
+  selectTalentsStatus,
+} from '../../features/talent/talentSlice';
+import { getUsers, selectUserStatus } from '../../features/user/userSlice';
+import {
+  getAchievements,
+  selectAchievementsStatus,
+} from '../../features/achievement/achievementSlice';
 
 const App = () => {
+  const talentStatus = useAppSelector(selectTalentsStatus);
+  const userStatus = useAppSelector(selectUserStatus);
+  const challengeStatus = useAppSelector(selectChallengeStatus);
+  const acievementsStatus = useAppSelector(selectAchievementsStatus);
+
+  const loading =
+    talentStatus === 'loading' ||
+    userStatus === 'loading' ||
+    challengeStatus === 'loading' ||
+    acievementsStatus === 'loading';
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getChallenges());
+    dispatch(getTalents());
+    dispatch(getUsers());
+    dispatch(getAchievements());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Router>
-      <AppLayout>
+      <AppLayout spinning={loading}>
         <Switch>
           <Route exact path="/">
             <Dashboard />

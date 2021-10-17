@@ -42,6 +42,7 @@ export const userSlice = createSlice({
       .addCase(addUser.fulfilled, (state, action) => {
         state.status = 'idle';
         state.current = action.payload;
+        state.list.push(action.payload);
         message.success('Request success');
       })
       .addCase(getUsers.pending, (state) => {

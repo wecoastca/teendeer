@@ -54,6 +54,10 @@ export const challengeSlice = createSlice({
         state.status = 'failed';
         message.success('Request failed');
       })
+      .addMatcher(isRejectedAction, (state, action) => {
+        state.status = 'failed';
+        message.success('Request failed');
+      })
   }
 });
 
