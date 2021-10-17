@@ -14,3 +14,10 @@ export const listTasks = async (): Promise<Task[]> => {
 
   return data;
 };
+
+export const getTaskByChallengeId = async (id: string): Promise<Task> => {
+  const response = await apiClient.get(`/task/${id}`);
+  const data = response.data as Task;
+
+  return data;
+}

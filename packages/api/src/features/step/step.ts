@@ -14,3 +14,10 @@ export const listSteps = async (): Promise<Step[]> => {
 
   return data;
 };
+
+export const getStepsByTaskId = async (id: number): Promise<Step[]> => {
+  const response = await apiClient.get(`/step/${id}`);
+  const data = response.data as Step[];
+
+  return data;
+}

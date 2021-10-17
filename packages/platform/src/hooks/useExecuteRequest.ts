@@ -14,8 +14,8 @@ export const useExecuteRequest = <IData, IResponse>(endpoint: string): { value: 
     const [error, setError] = useState(null);
 
     const execute = useCallback(async (options: IData) => {
-        return await fetch(`https://domen.com/${endpoint}`, {
-            method: 'POST',
+        return await fetch(`http://178.154.221.35:5000/${endpoint}`, {
+            method: typeof options !== 'undefined' ? 'POST' : 'GET',
             headers: {
                 'Content-Type': 'application/json',
             },

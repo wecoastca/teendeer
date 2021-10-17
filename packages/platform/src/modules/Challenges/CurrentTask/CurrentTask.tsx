@@ -1,15 +1,9 @@
 import { Button, Card, Spin, Steps } from 'antd';
-import { useExecuteRequest } from 'hooks';
-import { Task } from 'modules';
 import React, { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { ActionType, ActionTypeStrategy } from './ActionTypeStrategy';
-
-interface StepDataType {
-    description: string;
-    stepName: string;
-    actionType: ActionType;
-}
+import { ActionTypeStrategy } from './ActionTypeStrategy';
+import { Step, Task } from "@teendeer/types";
+import { getStepsByTaskId, listTasks } from "@teendeer/api"; 
 
 const mockGetCurrentTask = {
     id: '1',
@@ -33,16 +27,18 @@ export const CurrentTask: FC = () => {
 
     const [currentStep, setCurrentStep] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
-    //получение инфы о задании
-    const { execute: getCurrentTask, value: currTask } = useExecuteRequest<{ id: string }, Task>('/getCurrentTask');
-    //получение конкретного шага
-    const { execute: getCurrentStep, value: stepData } = useExecuteRequest<{ step: number }, StepDataType>('/getCurrentStep');
+    const [stepData, setStepData] = useState<Step[]>();
+    const [currentTask, setCurrentTask] = useState<Task>();
 
     useEffect(() => {
         setIsLoading(true);
-        getCurrentTask({ id });
-        getCurrentStep({ step: currentStep }).finally(() => setIsLoading(false));
-    }, [id, currentStep]);
+        listTasks().then((x) => setCurrentTask(x?.find((y) => String(y?.id) === id))).finally(() => setIsLoading(false));
+    }, [id]);
+
+    useEffect(() => {
+        setIsLoading(true);
+        getStepsByTaskId(Number(id)).then((x) => setStepData(x)).finally(() => setIsLoading(false));
+    }, [id]);
 
     const nextStep = () => {
         setCurrentStep(currentStep + 1);
@@ -50,16 +46,16 @@ export const CurrentTask: FC = () => {
 
     return (
         <Spin spinning={isLoading}>
-            <Card title={currTask?.name || mockGetCurrentTask?.name} style={{ borderColor: 'black', marginBottom: '30px' }}>
-                {currTask?.description || mockGetCurrentTask?.description}
+            <Card title={currentTask?.task_name} style={{ borderColor: 'black', marginBottom: '30px' }}>
+                {currentTask?.description}
                 <Steps current={currentStep} onChange={(current) => setCurrentStep(current)} style={{ marginTop: '10px' }}>
-                    {new Array(mockGetCurrentTask?.stepsNumber).fill(<Steps.Step />)}
+                    {new Array(stepData?.length).fill(<Steps.Step />)}
                 </Steps>
             </Card>
             <Card style={{ borderColor: 'black' }}>
-                {stepData?.description || mockStepFirstData?.description}
-                <h1>{stepData?.stepName || mockStepFirstData?.stepName}</h1>
-                <ActionTypeStrategy actionType={stepData?.actionType || mockStepFirstData?.actionType} />
+                {{}|| mockStepFirstData?.description}
+                <h1>{{} || mockStepFirstData?.stepName}</h1>
+                <ActionTypeStrategy actionType={ '' || mockStepFirstData?.actionType} />
                 {mockGetCurrentTask.stepsNumber !== currentStep ?
                     (<Button onClick={() => setCurrentStep(currentStep + 1)}>
                         Далее

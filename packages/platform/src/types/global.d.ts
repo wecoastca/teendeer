@@ -6,3 +6,11 @@ declare module '*.less' {
     const classNames: IClassNames;
     export = classNames;
   }
+
+declare enum ActionType {
+    CHECK_EXAMPLES = 'checkExamples',
+    UPLOAD = "upload",
+    WRITE_TEXT = "writeText",
+    PUBLISH = "publish",
+    TASK_SUCCESS = "taskSuccess"
+};

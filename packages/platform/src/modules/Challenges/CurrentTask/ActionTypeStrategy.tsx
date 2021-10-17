@@ -11,14 +11,6 @@ export interface ActionTypeStrategyPropsType {
     actionType: string;
 }
 
-export enum ActionType {
-    CHECK_EXAMPLES = 'checkExamples',
-    UPLOAD = "upload",
-    WRITE_TEXT = "writeText",
-    PUBLISH = "publish",
-    TASK_SUCCESS = "taskSuccess"
-};
-
 //TODO: Изоляция логики каждого компонента
 export const ActionTypeStrategy: FC<ActionTypeStrategyPropsType> = ({ actionType }) => {
     const [publishDate, setPublishDate] = useState();
