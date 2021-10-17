@@ -40,10 +40,6 @@ export const CurrentTask: FC = () => {
         getStepsByTaskId(Number(id)).then((x) => setStepData(x)).finally(() => setIsLoading(false));
     }, [id]);
 
-    const nextStep = () => {
-        setCurrentStep(currentStep + 1);
-    }
-
     return (
         <Spin spinning={isLoading}>
             <Card title={currentTask?.task_name} style={{ borderColor: 'black', marginBottom: '30px' }}>
@@ -56,9 +52,9 @@ export const CurrentTask: FC = () => {
                 {stepData?.[currentStep]?.step_text}
                 <h1>{stepData?.[currentStep]?.step_name}</h1>
                 <ActionTypeStrategy actionType={stepData?.[currentStep]?.action} step={stepData?.[currentStep]} />
-                {stepData?.length !== currentStep ?
+                {(stepData?.length || 0)-1 !== currentStep ?
                     (<Button onClick={() => setCurrentStep(currentStep + 1)}>
-                        Далее
+                        {stepData?.[currentStep]?.button_text}
                     </Button>)
                     : null}
             </Card>
