@@ -23,7 +23,7 @@ const AppHeader = () => {
         onSelect={handleSelect}>
         <Menu.Item key="/">Главная</Menu.Item>
         <Menu.Item key="/users">Пользователи</Menu.Item>
-        <Menu.Item key="/404">Аналитика</Menu.Item>
+        <Menu.Item key="/events">События</Menu.Item>
       </Menu>
     </Header>
   );
