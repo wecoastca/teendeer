@@ -83,7 +83,7 @@ export const CurrentChallenge: FC = () => {
 
     return (
         <Spin spinning={statusChallenge === Status.PENDING || statusTasks === Status.PENDING}>
-            <Card title={challengeInfo?.challenge_name || mockGetChallenge?.challenge_name} size="small" style={{ marginBottom: '15px' }} >
+            <Card title={challengeInfo?.challenge_name || mockGetChallenge?.challenge_name} size="small" style={{ marginBottom: '15px', borderColor: 'black' }} >
                 {challengeInfo?.description || mockGetChallenge?.description}
                 <Progress percent={(challengeInfo?.currentStep || mockGetChallenge?.currentStep) / (challengeInfo?.totalSteps || mockGetChallenge?.totalSteps) * 100} />
             </Card>
@@ -93,6 +93,7 @@ export const CurrentChallenge: FC = () => {
                         <Card
                             hoverable
                             cover={<img alt="step-image" src={x?.image_url || conf} />}
+                            style={{ borderColor: 'black' }}
                         >
                             <NavLink to={`/tasks/${x?.id}`}>
                                 <Meta title={x?.description} description={x?.name} />

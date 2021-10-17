@@ -4,7 +4,6 @@ import { Task } from 'modules';
 import React, { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { ActionType, ActionTypeStrategy } from './ActionTypeStrategy';
-const { Step } = Steps;
 
 interface StepDataType {
     description: string;
@@ -27,7 +26,7 @@ const mockGetCurrentTask = {
 const mockStepFirstData = {
     description: 'Это шаг рассказывающий про то почему не стоит начинать изучать программированию с js, так как иначе ученик станет фронтендером.',
     stepName: 'Впишите ваши идеи, почему фронтенд не для вас',
-    actionType: ActionType.TASK_SUCCESS
+    actionType: ActionType.WRITE_TEXT
 }
 export const CurrentTask: FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -61,7 +60,7 @@ export const CurrentTask: FC = () => {
                 {stepData?.description || mockStepFirstData?.description}
                 <h1>{stepData?.stepName || mockStepFirstData?.stepName}</h1>
                 <ActionTypeStrategy actionType={stepData?.actionType || mockStepFirstData?.actionType} />
-                {mockGetCurrentTask.stepsNumber === currentStep ?
+                {mockGetCurrentTask.stepsNumber !== currentStep ?
                     (<Button onClick={() => setCurrentStep(currentStep + 1)}>
                         Далее
                     </Button>)

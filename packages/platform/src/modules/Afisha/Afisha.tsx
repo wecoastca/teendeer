@@ -1,7 +1,6 @@
 import { Card, Col, Row } from 'antd'
 import React, { FC } from 'react'
 import styles from './Afisha.module.less';
-import './Afisha.module.less';
 import img from 'assets/conf.jpeg';
 
 const { Meta } = Card;

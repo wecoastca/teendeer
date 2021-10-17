@@ -84,7 +84,7 @@ export const Challenges: FC = () => {
             {
                 responseList.map((x) => (
                     <Card
-                        style={{ width: '100%', marginTop: 16 }}
+                        style={{ width: '100%', marginTop: 16, borderColor: 'black' }}
                         key={x?.key}
                         hoverable
                     >
