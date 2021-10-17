@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import AppLayout from '../AppLayout/AppLayout';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Steps } from 'antd';
 import Achievements from '../../pages/Achievements/Achievements';
 import Challenges from '../../pages/Challenges/Challenges';
 import Talents from '../../pages/Talents/Talents';
 import Tasks from '../../pages/Tasks/Tasks';
 import Users from '../../pages/Users/Users';
 import Dashboard from '../../pages/Dashboard/Dashboard';
+import Steps from '../../pages/Steps/Steps';
 import EmptyPage from '../../pages/EmptyPage/EmptyPage';
 import { useAppDispatch, useAppSelector } from '../../tools/hooks';
 import {
@@ -24,6 +24,7 @@ import {
   selectAchievementsStatus,
 } from '../../features/achievement/achievementSlice';
 import { getTasks, selectTaskStatus } from '../../features/task/taskSlice';
+import { getSteps, selectStepStatus } from '../../features/step/stepSlice';
 
 const App = () => {
   const talentStatus = useAppSelector(selectTalentsStatus);
@@ -31,13 +32,15 @@ const App = () => {
   const challengeStatus = useAppSelector(selectChallengeStatus);
   const acievementsStatus = useAppSelector(selectAchievementsStatus);
   const taskStatus = useAppSelector(selectTaskStatus);
+  const stepStatus = useAppSelector(selectStepStatus);
 
   const loading =
     talentStatus === 'loading' ||
     userStatus === 'loading' ||
     challengeStatus === 'loading' ||
     acievementsStatus === 'loading' ||
-    taskStatus === 'loading';
+    taskStatus === 'loading' ||
+    stepStatus === 'loading';
 
   const dispatch = useAppDispatch();
 
@@ -47,6 +50,7 @@ const App = () => {
     dispatch(getUsers());
     dispatch(getAchievements());
     dispatch(getTasks());
+    dispatch(getSteps());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

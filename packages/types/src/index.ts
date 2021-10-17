@@ -25,7 +25,7 @@ export type User = {
     "talent_level": number;
   }[]
 
-  steps_info: {
+  step_info: {
     "step_id": number;
     "active": boolean;
   }[]
@@ -67,15 +67,15 @@ export type Task = {
   task_number: number;
 }
 
-// export type Step = {
-//   id: number;
-//   action: string; // DO not forget, 'vk_widget', 'ig_widget' or 'carousel'
-//   task: string; // Task id?
-//   name: string; // step_name
-//   order: number; // step_number
-//   description: string; // step_text
-//   image_url: string;
-//   button_text: string;
-//   meta_type: string
-//   meta_urls: string[]; // not single string, Array
-// }
+export type Step = {
+  id: number;
+  task_id: number;
+  step_name: string;
+  action: string;
+  step_number: number;
+  step_text: string;
+  image_url: string;
+  button_text: string;
+  meta_type: string
+  meta_urls: string[];
+}
