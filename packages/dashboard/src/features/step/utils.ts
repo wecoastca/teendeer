@@ -12,6 +12,8 @@ export const getStepActionName = (type: string) => {
       return 'Выбор времени';
     case StepAction.TASK_SUCCESS:
       return 'Успешное выполнение';
+    case StepAction.RANDOM:
+      return 'Случайная тема';
     default:
       return 'Неизвестно';
   }

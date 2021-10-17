@@ -85,7 +85,8 @@ export enum StepAction {
   UPLOAD = "upload",
   WRITE_TEXT = "writeText",
   PUBLISH = "publish",
-  TASK_SUCCESS = "taskSuccess"
+  TASK_SUCCESS = "taskSuccess",
+  RANDOM = "random"
 };
 
 export type Product = {
