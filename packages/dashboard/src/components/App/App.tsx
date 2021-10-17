@@ -19,16 +19,22 @@ import {
   selectTalentsStatus,
 } from '../../features/talent/talentSlice';
 import { getUsers, selectUserStatus } from '../../features/user/userSlice';
+import {
+  getAchievements,
+  selectAchievementsStatus,
+} from '../../features/achievement/achievementSlice';
 
 const App = () => {
   const talentStatus = useAppSelector(selectTalentsStatus);
   const userStatus = useAppSelector(selectUserStatus);
   const challengeStatus = useAppSelector(selectChallengeStatus);
+  const acievementsStatus = useAppSelector(selectAchievementsStatus);
 
   const loading =
     talentStatus === 'loading' ||
     userStatus === 'loading' ||
-    challengeStatus === 'loading';
+    challengeStatus === 'loading' ||
+    acievementsStatus === 'loading';
 
   const dispatch = useAppDispatch();
 
@@ -36,6 +42,7 @@ const App = () => {
     dispatch(getChallenges());
     dispatch(getTalents());
     dispatch(getUsers());
+    dispatch(getAchievements());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

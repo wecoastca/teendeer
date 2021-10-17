@@ -45,17 +45,16 @@ export type Challenge = {
   description: string;
 }
 
-//// TODO: still in process
-// export type Achievement = {
-//   id: number;
-//   name: string;
-//   type: string; // achievement_type
-//   image_url: string;
-//   description: string;
-//   talent: string; // Talent id?
-//   cost: number; // talent_points
-// }
+export type Achievement = {
+  id: number;
+  name: string;
+  image_url: string;
+  description: string;
+  achievement_type: 'reward' | 'document';
+  talent_points: number;
+}
 
+//// TODO: still in process
 // export type Task = {
 //   id: number;
 //   name: string; // task_name
