@@ -43,6 +43,7 @@ export type Challenge = {
   req_talent_level: number;
   talent_id: number;
   description: string;
+  achievement_id: number;
 }
 
 export type Achievement = {

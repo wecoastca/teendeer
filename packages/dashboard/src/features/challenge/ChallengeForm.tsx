@@ -36,6 +36,9 @@ const ChallengeForm = () => {
           <FormItem name="talent_id" label="ID таланта">
             <Input type="number" />
           </FormItem>
+          <FormItem name="achievement_id" label="ID ачивки">
+            <Input type="number" />
+          </FormItem>
           <Button type="primary" onClick={handleSubmit}>
             Добавить
           </Button>

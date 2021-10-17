@@ -1,4 +1,5 @@
-import { Spin, Card } from 'antd';
+import { Spin, Space, Card, Typography, Divider, Tag } from 'antd';
+import Meta from 'antd/lib/card/Meta';
 import React from 'react';
 import { useAppSelector } from '../../tools/hooks';
 import {
@@ -6,13 +7,33 @@ import {
   selectAchievements,
 } from './achievementSlice';
 
+const { Title } = Typography;
+
 const AchievementList = () => {
   const achievements = useAppSelector(selectAchievements);
   const status = useAppSelector(selectAchievementsStatus);
 
   return (
     <Spin spinning={status === 'loading'}>
-      <Card>{JSON.stringify(achievements)}</Card>
+      <Divider />
+      <Title level={3}>Список ачивок</Title>
+      <Space wrap={true}>
+        {achievements.map((achievement) => (
+          <Card
+            cover={<img alt={achievement.name} src={achievement.image_url} />}
+            actions={[
+              <Tag color="default">{achievement.achievement_type}</Tag>,
+              <Tag color="blue">{achievement.talent_points}</Tag>,
+            ]}
+            key={achievement.id}
+            style={{ width: 240 }}>
+            <Meta
+              title={achievement.name}
+              description={achievement.description}
+            />
+          </Card>
+        ))}
+      </Space>
     </Spin>
   );
 };
