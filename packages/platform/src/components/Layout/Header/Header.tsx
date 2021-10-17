@@ -6,7 +6,7 @@ import { Header as AntHeader } from 'antd/lib/layout/layout';
 export const Header: FC = () => {
   return (
     <AntHeader className={styles.header}>
-      <img src={logo} className={styles.logo} alt="logo" />
+      <img src="https://icons.iconarchive.com/icons/artdesigner/xmas-deco/128/deer-icon.png" className={styles.logo} alt="logo" />
       <div className={styles.brand}>TEENDEER</div>
     </AntHeader>
   )
