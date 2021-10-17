@@ -1,10 +1,11 @@
 import React from 'react';
-import { Step } from '@teendeer/types';
-import { Button, Card, Form, Input, Spin } from 'antd';
+import { Step, StepAction } from '@teendeer/types';
+import { Button, Card, Form, Input, Radio, Spin } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import FormItem from 'antd/lib/form/FormItem';
 import { useAppDispatch, useAppSelector } from '../../tools/hooks';
 import { addStep, selectStepStatus } from './stepSlice';
+import { getStepActionName } from './utils';
 
 const StepForm = () => {
   const status = useAppSelector(selectStepStatus);
@@ -36,8 +37,12 @@ const StepForm = () => {
           <FormItem name="step_text" label="Описание">
             <Input.TextArea />
           </FormItem>
-          <FormItem name="action" label="Тип экшена">
-            <Input />
+          <FormItem name="action" label="Тип шага">
+            <Radio.Group>
+              {Object.values(StepAction).map((value) => (
+                <Radio value={value}>{getStepActionName(value)}</Radio>
+              ))}
+            </Radio.Group>
           </FormItem>
           <FormItem name="button_text" label="Текст кнопки">
             <Input />
