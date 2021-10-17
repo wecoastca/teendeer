@@ -1,53 +1,10 @@
-import { Talent, TalentInfo, User } from '@teendeer/types';
+import { TalentInfo } from '@teendeer/types';
 import { Spin, Table, Progress } from 'antd';
 import React from 'react';
 import { useAppSelector } from '../../tools/hooks';
 import { selectTalents } from '../talent/talentSlice';
 import { selectUserStatus, selectUsers } from './userSlice';
-
-const COLORS = {
-  1: '#086788',
-  2: '#07A0C3',
-  3: '#F0C808',
-  4: '#FFF1D0',
-  5: '#DD1C1A',
-};
-
-const getColor = (id: number) => {
-  switch (id) {
-    case 1:
-      return COLORS[1];
-    case 2:
-      return COLORS[2];
-    case 3:
-      return COLORS[3];
-    case 4:
-      return COLORS[4];
-    case 5:
-      return COLORS[5];
-  }
-};
-const applyRandomTalentInfo =
-  (talents: Talent[]) =>
-  (user: User): User => ({
-    ...user,
-    talent_info: Array.from({ length: Math.random() * talents.length }, () => ({
-      talent_id: Math.floor(Math.random() * talents.length + 1),
-      talent_points: Math.floor(Math.random() * 10000),
-      talent_level: Math.floor(Math.random() * 10),
-    })),
-  });
-
-const applyRandomUserLevel = (user: User): User => ({
-  ...user,
-  user_level: Math.floor(Math.random() * 30),
-});
-
-const applyModify = (users: User[], talents: Talent[]) =>
-  users.map(applyRandomTalentInfo(talents)).map(applyRandomUserLevel);
-
-const getTalentName = (talents: Talent[], id: number) =>
-  talents.find((talent) => talent.id === id)?.name;
+import { applyModify, getTalentName, getColor } from './utils';
 
 const UserSearch = () => {
   const talents = useAppSelector(selectTalents);
@@ -67,11 +24,6 @@ const UserSearch = () => {
       title: 'Логин',
       dataIndex: 'login',
       key: 'login',
-    },
-    {
-      title: 'Дата рождения',
-      dataIndex: 'date_of_birth',
-      key: 'date_of_birth',
     },
     {
       title: 'Подписчики',
