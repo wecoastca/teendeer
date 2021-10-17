@@ -1,9 +1,11 @@
 import { TalentInfo } from '@teendeer/types';
-import { Spin, Table, Progress } from 'antd';
+import { Spin, Table, Progress, Divider, Card } from 'antd';
 import React from 'react';
 import { useAppSelector } from '../../tools/hooks';
 import { selectTalents } from '../talent/talentSlice';
 import { selectUserStatus, selectUsers } from './userSlice';
+import UserSubsFilter from './UserSubsFilter';
+import UserTalentFilters from './UserTalentFilters';
 import { applyModify, getTalentName, getColor } from './utils';
 
 const UserSearch = () => {
@@ -67,6 +69,14 @@ const UserSearch = () => {
 
   return (
     <Spin spinning={status === 'loading'}>
+      <Card title="Фильтры по таланту">
+        <UserTalentFilters />
+      </Card>
+      <Divider />
+      <Card title="Фильтры по подписчикам">
+        <UserSubsFilter />
+      </Card>
+      <Divider />
       <Table columns={columns} dataSource={changed_users} />
     </Spin>
   );
