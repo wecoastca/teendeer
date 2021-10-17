@@ -29,6 +29,8 @@ export type User = {
     "step_id": number;
     "active": boolean;
   }[]
+
+  achievement_ids: string[];
 }
 
 export type Talent = {
@@ -55,16 +57,15 @@ export type Achievement = {
   talent_points: number;
 }
 
-//// TODO: still in process
-// export type Task = {
-//   id: number;
-//   name: string; // task_name
-//   challenge: string; // Challenge id?
-//   description: string;
-//   image_url: string;
-//   points: number;
-//   task_order: number; // task_number
-// }
+export type Task = {
+  id: number;
+  challenge_id: number;
+  task_name: string;
+  description: string;
+  image_url: string;
+  task_points: number;
+  task_number: number;
+}
 
 // export type Step = {
 //   id: number;
