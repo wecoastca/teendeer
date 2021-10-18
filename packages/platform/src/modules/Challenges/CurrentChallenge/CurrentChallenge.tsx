@@ -3,7 +3,7 @@ import React, { FC, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import conf from 'assets/conf.jpeg';
 import { NavLink } from "react-router-dom";
-import { listTasks, listChallenges } from "@teendeer/api";
+import { getTasksByChallengeId, listChallenges } from "@teendeer/api";
 import { Challenge, Task } from '@teendeer/types/dist';
 
 const { Meta } = Card;
@@ -24,7 +24,7 @@ export const CurrentChallenge: FC = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        listTasks()
+        getTasksByChallengeId(id)
             .then((x) => setTasks(x))
             .finally(() => setIsLoading(false));
     }, [id]);
